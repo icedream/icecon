@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>connectDialog</class>
+ <widget class="QDialog" name="connectDialog">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>90</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Connect to...</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>36</y>
+     <width>50</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Password:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="rconAddress">
+   <property name="geometry">
+    <rect>
+     <x>104</x>
+     <y>10</y>
+     <width>291</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="rconPassword">
+   <property name="geometry">
+    <rect>
+     <x>104</x>
+     <y>36</y>
+     <width>291</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>88</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Address (IP:Port):</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancel">
+   <property name="geometry">
+    <rect>
+     <x>239</x>
+     <y>60</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ok">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>60</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder></zorder>
+  <zorder>horizontalLayoutWidget</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
