@@ -21,8 +21,8 @@ var (
 		Flag("gui", "Run as GUI (runs automatically as GUI if no arguments given, ignored if command flag used)").
 		Short('g').Bool()
 
-	guiInitErr error
-	kernel32 *syscall.DLL
+	guiInitErr  error
+	kernel32    *syscall.DLL
 	freeConsole *syscall.Proc
 
 	dlg *mainDialog
@@ -150,7 +150,7 @@ func runGraphicalUi() (err error) {
 			}
 		}()
 	})
-	
+
 	// Get rid of the console window
 	freeConsole.Call()
 
