@@ -22,7 +22,7 @@ If you need to regenerate the UI code files (`*_ui.go`) and/or the Windows resou
 
 - Set up a `GOPATH` as environment variable that points to an existing folder. This folder will be used by Go to store compiled libraries and installed binaries which will be needed for the next step.
 - Ensure you have `$GOPATH/bin` (`%GOPATH%\bin` on Windows) included in your `PATH` environment variable.
-- Install needed tools and dependencies via `go get -v -u github.com/lxn/walk/tools/ui2walk github.com/josephspurrier/goversioninfo/cmd/goversioninfo`.
+- Install needed tools and dependencies via `go get -v -u github.com/icedream/ui2walk github.com/josephspurrier/goversioninfo/cmd/goversioninfo`.
 - Run `go generate -v` in the *IceCon* source code folder.
 
 You should now be able to run a normal `go build` to get your desired binary.

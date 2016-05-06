@@ -1,6 +1,8 @@
 // This file was created by ui2walk and may be regenerated.
 // DO NOT EDIT OR YOUR MODIFICATIONS WILL BE LOST!
 
+//+build windows
+
 package main
 
 import (
