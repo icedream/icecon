@@ -1,5 +1,8 @@
 //+build windows
+
 package main
+
+//go:generate ui2walk
 
 import (
 	"fmt"

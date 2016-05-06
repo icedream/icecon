@@ -1,5 +1,4 @@
 //+build windows
-//go:generate ui2walk connectdialog.ui
 
 package main
 
