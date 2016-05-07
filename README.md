@@ -8,7 +8,7 @@ Specifically, this tool has been written for quick administration of modified Mo
 
 ### Binaries
 
-Binaries will be provided as soon as possible, both stable and snapshots!
+Binaries for all releases for Linux and Windows are always available on the [GitHub releases page](https://github.com/icedream/icecon/releases).
 
 ### Source code
 
