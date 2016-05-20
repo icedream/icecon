@@ -91,10 +91,6 @@ func runGraphicalUi() (err error) {
 		return
 	}
 	connectAction.Triggered().Attach(func() {
-		addressStr := ""
-		if address != nil {
-			addressStr = address.String()
-		}
 		result, addr, pw, err := runConnectDialog(addressStr, password, dlg)
 		if err != nil {
 			uiLogError(fmt.Sprintf("Failed to run connect dialog: %s", err))

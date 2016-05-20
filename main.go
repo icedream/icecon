@@ -22,8 +22,9 @@ var (
 		"Server IP/hostname and port, written as \"server:port\".")
 	argPassword = kingpin.Arg("password", "The RCON password.")
 
-	address  *net.UDPAddr
-	password string
+	address    *net.UDPAddr
+	addressStr string
+	password   string
 
 	socket       *net.UDPConn
 	socketBuffer = make([]byte, 64*1024)
@@ -39,7 +40,7 @@ func initSocketAddr(addr string) (err error) {
 		return
 	}
 
-	address = newAddr
+	address, addressStr = newAddr, addr
 
 	return
 }
