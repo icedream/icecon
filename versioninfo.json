@@ -4,13 +4,13 @@
 		"FileVersion": {
 			"Major": 1,
 			"Minor": 0,
-			"Patch": 0,
+			"Patch": 1,
 			"Build": 0
 		},
 		"ProductVersion": {
 			"Major": 1,
 			"Minor": 0,
-			"Patch": 0,
+			"Patch": 1,
 			"Build": 0
 		},
 		"FileFlagsMask": "3f",
@@ -24,14 +24,14 @@
 		"Comments": "IceCon",
 		"CompanyName": "",
 		"FileDescription": "Icedream's RCON client",
-		"FileVersion": "1.0.0.0",
+		"FileVersion": "1.0.1.0",
 		"InternalName": "icecon",
 		"LegalCopyright": "",
 		"LegalTrademarks": "",
 		"OriginalFilename": "icecon.exe",
 		"PrivateBuild": "1",
 		"ProductName": "IceCon",
-		"ProductVersion": "1.0.0.0",
+		"ProductVersion": "1.0.1.0",
 		"SpecialBuild": ""
 	},
 	"VarFileInfo":
