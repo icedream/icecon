@@ -90,7 +90,7 @@ def build(os, arch) {
         """
         sh "go generate -v ./..."
         sh "go get -v -d ./..."
-        sh "go build -o ${binfilename}"
+        sh "go build -v -ldflags -s -o ${binfilename}"
         upx binfilename
         archive "${binfilename}"
       }
