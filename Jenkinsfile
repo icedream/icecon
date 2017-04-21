@@ -31,7 +31,6 @@ def upx(file) {
 def withGoEnv(os, arch, f) {
   // Install go
   env.GOROOT = tool "Go 1.7"
-  env.GOPATH = env.WORKSPACE
 
   switch(arch) {
     case "x64":
@@ -50,7 +49,13 @@ def withGoEnv(os, arch, f) {
       break
   }
 
-  withEnv(["CGO_ENABLED=1", "GOOS=${os}", "GOARCH=${arch}"]) {
+  withEnv([
+    "CGO_ENABLED=1",
+    "GOARCH=${arch}",
+    "GOOS=${os}",
+    "GOPATH=${env.WORKSPACE}/.go",
+    "PATH+=${env.GOROOT}/bin:${env.WORKSPACE}/.go/bin",
+  ]) {
     switch(arch) {
       case "armv5":
         withEnv("GOARM=5", f)
