@@ -1,3 +1,9 @@
+// icecon_linux_amd64
+// icecon_linux_arm
+// icecon_linux_i386
+// icecon_windows_amd64.exe
+// icecon_windows_i386.exe
+
 def binext(os) {
   switch(os) {
     case "windows":
@@ -79,7 +85,11 @@ def build(os, arch) {
     docker.image("dockcross/${os}-${arch}").inside {
       withGoEnv(os, arch) {
         def binfilename = "icecon_${env.GOOS}_${env.GOARCH}${binext os}"
-        sh "GOOS= GOARCH= go get -v github.com/josephspurrier/goversioninfo/cmd/goversioninfo"
+        sh """
+        GOOS= GOARCH= go get -v \
+          github.com/josephspurrier/goversioninfo/cmd/goversioninfo \
+          github.com/icedream/ui2walk \
+        """
         sh "go generate -v ./..."
         sh "go get -v -d ./..."
         sh "go build -o ${binfilename}"
