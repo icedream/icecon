@@ -9,26 +9,26 @@ def binext(os) {
 
 def upx(file) {
   // Install upx
-  withEnv(["PATH+=${tool "UPX v3.91"}"]) {
-    switch("${env.GOOS}.${env.GOARCH}") {
-      case "linux.amd64":
-      case "linux.386":
-      case "darwin.amd64":
-      case "darwin.arm":
-      case "windows.amd64":
-      case "windows.386":
-      case "freebsd.386":
-      case "netbsd.386":
+  switch("${env.GOOS}.${env.GOARCH}") {
+    case "linux.amd64":
+    case "linux.386":
+    case "darwin.amd64":
+    case "darwin.arm":
+    case "windows.amd64":
+    case "windows.386":
+    case "freebsd.386":
+    case "netbsd.386":
+      withEnv(["PATH+=${tool "UPX v3.91"}"]) {
         if (env.GOOS == "linux") {
           sh "GOOS= GOARCH= go get -v github.com/pwaller/goupx"
           sh "goupx --no-upx \"$file\""
         }
         sh "upx --best --ultra-brute \"$file\""
-        break
-      default:
-        echo "Skipping UPX compression as it is not supported for $goos/$goarch."
-        break
-    }
+      }
+      break
+    default:
+      echo "Skipping UPX compression as it is not supported for $goos/$goarch."
+      break
   }
 }
 
