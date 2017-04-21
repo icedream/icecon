@@ -34,7 +34,7 @@ def upx(file) {
 
 def withGoEnv(os, arch, f) {
   // Install go
-  env.GOROOT = tool "Go 1.7"
+  env.GOROOT = tool "Go 1.8"
 
   switch(arch) {
     case "x64":
