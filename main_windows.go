@@ -68,7 +68,7 @@ func runGraphicalUi() (err error) {
 
 	// Window icon
 	// TODO - Do this more intelligently
-	for i := uintptr(0); i < uintptr(128); i++ {
+	for i := 0; i < 128; i++ {
 		if icon, err := walk.NewIconFromResourceId(i); err == nil {
 			dlg.SetIcon(icon)
 			break
