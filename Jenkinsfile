@@ -12,10 +12,14 @@ def upx(file) {
   tool "UPX v3.91"
 
   switch("${env.GOOS}.${env.GOARCH}") {
-    case ~/linux\.(amd64|386)/:
-    case ~/darwin\.(amd64|arm)/:
-    case ~/windows\..+/:
-    case ~/.+bsd\.386/:
+    case "linux.amd64":
+    case "linux.386":
+    case "darwin.amd64":
+    case "darwin.arm":
+    case "windows.amd64":
+    case "windows.386":
+    case "freebsd.386":
+    case "netbsd.386":
       if (env.GOOS == "linux") {
         sh "GOOS= GOARCH= go get -v github.com/pwaller/goupx"
         sh "goupx --no-upx \"$file\""
