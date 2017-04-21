@@ -2,4 +2,4 @@
 
 package main
 
-//go:generate goversioninfo -manifest "rsrc/app.manifest" -icon "rsrc/app.ico" -o "rsrc_windows.syso" -arch amd64
+//go:generate goversioninfo -manifest "rsrc/app.manifest" -icon "rsrc/app.ico" -o "rsrc_windows.syso" -64
