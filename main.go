@@ -117,7 +117,7 @@ func usage() {
 
 func main() {
 	fmt.Println("IceCon - Icedream's RCON Client")
-	fmt.Println("\t\u00A9 2016 Carl Kittelberger/Icedream")
+	fmt.Println("\t\u00A9 2016-2017 Carl Kittelberger/Icedream")
 	fmt.Println()
 
 	argAddressTCP := argAddress.TCP()
