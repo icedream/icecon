@@ -25,7 +25,8 @@ var (
 	kernel32    *syscall.DLL
 	freeConsole *syscall.Proc
 
-	dlg *mainDialog
+	dlg              *mainDialog
+	dlgOriginalTitle string
 )
 
 func init() {
@@ -57,6 +58,17 @@ func uiNormalize(textRef *string) {
 	text = strings.Replace(text, "\n", "\r\n", -1)
 
 	*textRef = text
+}
+
+func uiUpdateAddress() {
+	if len(dlgOriginalTitle) <= 0 {
+		dlgOriginalTitle = dlg.Title()
+	}
+	if len(addressStr) > 0 {
+		dlg.SetTitle(dlgOriginalTitle + " - " + addressStr)
+	} else {
+		dlg.SetTitle(dlgOriginalTitle)
+	}
 }
 
 func runGraphicalUi() (err error) {
@@ -103,6 +115,7 @@ func runGraphicalUi() (err error) {
 			}
 			password = pw
 			dlg.ui.rconOutput.SetText("")
+			uiUpdateAddress()
 		}
 	})
 	if err = dlg.Menu().Actions().Add(connectAction); err != nil {
@@ -130,6 +143,8 @@ func runGraphicalUi() (err error) {
 	// When window is initialized we can let a secondary routine print all
 	// output received
 	dlg.Synchronize(func() {
+		uiUpdateAddress()
+
 		go func() {
 			for {
 				msg, err := receiveRcon()
