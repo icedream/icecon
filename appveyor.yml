@@ -1,0 +1,56 @@
+version: "{build}"
+
+platform: x64
+
+branches:
+  only:
+    - master
+    - develop
+    - ci/appveyor
+
+clone_folder: c:\gopath\src\github.com\icedream\icecon
+
+environment:
+  CGO_ENABLED: "1"
+  GOPATH: c:\gopath
+  GOOS: windows
+  GOVERSION: "1.8.3"
+
+  matrix:
+    - GOARCH: "amd64"
+    - GOARCH: "386"
+
+skip_tags: true
+
+skip_commits:
+  message: /\[ci\s*skip\]/
+
+install:
+  # Install our specifically wanted version of Go
+  - rmdir c:\go /s /q
+  - appveyor DownloadFile "https://storage.googleapis.com/golang/go%GOVERSION%.windows-amd64.zip"
+  - 7z x "go%GOVERSION%.windows-amd64.zip" -y -oC:\ > NUL
+  - path c:\go\bin;%PATH%
+
+  # Set up GOPATH
+  - path %GOPATH%\bin;%PATH%
+
+  # Install code generation dependencies
+  - go get -v github.com/josephspurrier/goversioninfo/cmd/goversioninfo github.com/icedream/ui2walk
+
+build_script:
+  # Build with Go
+  - go generate -v ./...
+  - go get -v -d ./...
+  - go build -v -ldflags -s -o icecon_%GOOS%_%GOARCH%.exe
+
+  # Optimize binary in size with UPX
+  - upx --best --ultra-brute icecon_%GOOS%_%GOARCH%.exe
+
+test: off
+
+deploy: off
+
+artifacts:
+  - path: icecon_windows_amd64.exe
+    name: binary
