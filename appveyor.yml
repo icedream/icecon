@@ -10,6 +10,10 @@ branches:
 
 clone_folder: c:\gopath\src\github.com\icedream\icecon
 
+cache:
+  - go1.8.3.windows-amd64.zip
+  - upx391w.zip
+
 environment:
   CGO_ENABLED: "1"
   GOPATH: c:\gopath
@@ -26,9 +30,14 @@ skip_commits:
   message: /\[ci\s*skip\]/
 
 install:
+  # Install UPX
+  - if not exist "upx391w.zip" appveyor DownloadFile "http://upx.sourceforge.net/download/upx391w.zip" -FileName "upx391w.zip"
+  - 7z x -y "upx391w.zip" -oC:\upx >null
+  - path C:\upx;%PATH%
+
   # Install our specifically wanted version of Go
   - rmdir c:\go /s /q
-  - appveyor DownloadFile "https://storage.googleapis.com/golang/go%GOVERSION%.windows-amd64.zip"
+  - if not exist "go%GOVERSION%.windows-amd64.zip" appveyor DownloadFile "https://storage.googleapis.com/golang/go%GOVERSION%.windows-amd64.zip"
   - 7z x "go%GOVERSION%.windows-amd64.zip" -y -oC:\ > NUL
   - path c:\go\bin;%PATH%
 
