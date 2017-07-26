@@ -45,11 +45,7 @@ install:
   - path %GOPATH%\bin;%PATH%
 
   # Install code generation dependencies
-  - setlocal
-  - set GOOS=
-  - set GOARCH=
-  - go get -v github.com/josephspurrier/goversioninfo/cmd/goversioninfo github.com/icedream/ui2walk
-  - endlocal
+  - set GOOS= & set GOARCH= & go get -v github.com/josephspurrier/goversioninfo/cmd/goversioninfo github.com/icedream/ui2walk
 
 build_script:
   # Build with Go
