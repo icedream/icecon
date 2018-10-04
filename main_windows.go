@@ -27,6 +27,9 @@ var (
 
 	dlg              *mainDialog
 	dlgOriginalTitle string
+	
+	history []string
+	historyIndex = 0
 )
 
 func init() {
@@ -124,10 +127,35 @@ func runGraphicalUi() (err error) {
 
 	// Handle input
 	dlg.ui.rconInput.KeyPress().Attach(func(key walk.Key) {
+		// handle history (arrow up/down)
+		if key == walk.KeyUp || key == walk.KeyDown {
+			if len(history) == 0 {
+				return
+			}
+			
+			if key == walk.KeyUp {
+				if historyIndex == 0 { 
+					return
+				}
+				
+				historyIndex -= 1
+				dlg.ui.rconInput.SetText(history[historyIndex])
+			}else{
+				if (historyIndex + 1) >= len(history) {
+					return
+				}
+			
+				historyIndex += 1
+				dlg.ui.rconInput.SetText(history[historyIndex])
+			}
+			
+			return
+		}
+	
 		if key != walk.KeyReturn {
 			return
 		}
-
+		
 		if address == nil {
 			uiLogError("No server configured.")
 			return
@@ -138,6 +166,10 @@ func runGraphicalUi() (err error) {
 
 		uiLog(address.String() + "> " + cmd)
 		sendRcon(cmd)
+		
+		// add to history
+		history = append(history, cmd)
+		historyIndex = len(history)
 	})
 
 	// When window is initialized we can let a secondary routine print all
