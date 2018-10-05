@@ -27,6 +27,9 @@ var (
 
 	dlg              *mainDialog
 	dlgOriginalTitle string
+
+	history      []string
+	historyIndex = 0
 )
 
 func init() {
@@ -69,6 +72,16 @@ func uiUpdateAddress() {
 	} else {
 		dlg.SetTitle(dlgOriginalTitle)
 	}
+}
+
+func addToHistory(command string) {
+	// limit history to 20 items
+	if len(history) > 20 {
+		history = append(history[:0], history[0+1:]...)
+	}
+
+	history = append(history, command)
+	historyIndex = len(history)
 }
 
 func runGraphicalUi() (err error) {
@@ -124,6 +137,31 @@ func runGraphicalUi() (err error) {
 
 	// Handle input
 	dlg.ui.rconInput.KeyPress().Attach(func(key walk.Key) {
+		// handle history (arrow up/down)
+		if key == walk.KeyUp || key == walk.KeyDown {
+			if len(history) == 0 {
+				return
+			}
+
+			if key == walk.KeyUp {
+				if historyIndex == 0 {
+					return
+				}
+
+				historyIndex -= 1
+				dlg.ui.rconInput.SetText(history[historyIndex])
+			} else {
+				if (historyIndex + 1) >= len(history) {
+					return
+				}
+
+				historyIndex += 1
+				dlg.ui.rconInput.SetText(history[historyIndex])
+			}
+
+			return
+		}
+
 		if key != walk.KeyReturn {
 			return
 		}
@@ -138,6 +176,9 @@ func runGraphicalUi() (err error) {
 
 		uiLog(address.String() + "> " + cmd)
 		sendRcon(cmd)
+
+		// add to history
+		addToHistory(cmd)
 	})
 
 	// When window is initialized we can let a secondary routine print all
