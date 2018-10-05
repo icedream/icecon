@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+- Up and down arrow keys can now be used to scroll through command history to reissue already typed commands. (Windows UI) ([#10](https://github.com/icedream/icecon/pull/10), thanks to @TheIndra55)
 - Current server address in title bar. (Windows UI)
 
 ### Changed
