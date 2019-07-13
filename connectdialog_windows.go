@@ -9,7 +9,7 @@ type connectDialog struct {
 	ui connectDialogUI
 }
 
-func runConnectDialog(currentAddr string, currentPw string, owner walk.Form) (result bool, addr string, pw string, err error) {
+func runConnectDialog(currentAddr string, currentPw string, owner walk.Form, title string) (result bool, addr string, pw string, err error) {
 	dlg := new(connectDialog)
 
 	if err = dlg.init(owner); err != nil {
@@ -34,6 +34,10 @@ func runConnectDialog(currentAddr string, currentPw string, owner walk.Form) (re
 
 	dlg.ui.rconAddress.SetText(currentAddr)
 	dlg.ui.rconPassword.SetText(currentPw)
+
+	if title != "" {
+		dlg.SetTitle(title)
+	}
 
 	choice := dlg.Run()
 
