@@ -43,8 +43,9 @@ var (
 )
 
 type bookmark struct {
-	Address  string `json:"address"`
-	Password string `json:"password"`
+	Address  string       `json:"address"`
+	Password string       `json:"password"`
+	Action   *walk.Action `json:"-"`
 }
 
 func init() {
@@ -232,8 +233,10 @@ func runGraphicalUi() (err error) {
 	bookmarksMenu, _ = walk.NewMenu()
 
 	// Add for every bookmark a menu action
-	for _, bookmark := range bookmarks {
+	for i, bookmark := range bookmarks {
 		item := createBookmarkItem(bookmark.Address)
+
+		bookmarks[i].Action = item
 		bookmarksMenu.Actions().Add(item)
 	}
 
@@ -252,16 +255,35 @@ func runGraphicalUi() (err error) {
 
 		// Add bookmark if not empty addr
 		if result && len(addr) > 0 {
-			bookmarks = append(bookmarks, bookmark{addr, pw})
 			item := createBookmarkItem(addr)
+			bookmarks = append(bookmarks, bookmark{addr, pw, item})
+
 			// Add before "add bookmark" action
-			bookmarksMenu.Actions().Insert((bookmarksMenu.Actions().Len() - 1), item)
+			bookmarksMenu.Actions().Insert((bookmarksMenu.Actions().Len() - 2), item)
 
 			// Save bookmarks to file
 			saveBookmarks()
 		}
 	})
+
+	removeBookmarksAction := walk.NewAction()
+	if err = removeBookmarksAction.SetText("Remove all"); err != nil {
+		return
+	}
+	removeBookmarksAction.Triggered().Attach(func() {
+		for _, bookmark := range bookmarks {
+			bookmarksMenu.Actions().Remove(bookmark.Action)
+		}
+
+		// Clear bookmarks in memory
+		bookmarks = bookmarks[:0]
+
+		// Update in file
+		saveBookmarks()
+	})
+
 	bookmarksMenu.Actions().Add(addBookmarkAction)
+	bookmarksMenu.Actions().Add(removeBookmarksAction)
 
 	// Bookmarks menu
 	bookmarksAction, _ := dlg.Menu().Actions().AddMenu(bookmarksMenu)
