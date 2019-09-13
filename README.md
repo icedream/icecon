@@ -1,6 +1,6 @@
 # ![Logo](img/logo_32.png) IceCon RCON client
 
-[![Release version](https://img.shields.io/github/release/icedream/icecon.svg?maxAge=2592000)](https://github.com/icedream/icecon/releases) [![Jenkins build status](https://img.shields.io/jenkins/s/https/ci.icedream.pw/icecon.svg?maxAge=2592000)](https://ci.icedream.pw/job/icecon/) ![Maintained?](https://img.shields.io/maintenance/yes/2018.svg?maxAge=2592000)
+[![Release version](https://img.shields.io/github/release/icedream/icecon.svg?maxAge=2592000)](https://github.com/icedream/icecon/releases) [![Jenkins build status](https://img.shields.io/jenkins/build/https/ci.icedream.tech/job/github/job/icedream/job/icecon/job/develop.svg?maxAge=2592000)](https://ci.icedream.tech/job/github/job/icedream/job/icecon) ![Maintained?](https://img.shields.io/maintenance/yes/2019.svg?maxAge=2592000)
 
 *IceCon* is a Q3-compatible RCON client. It can connect to any server that implements RCON over a Q3-compatible network protocol (UDP) and even comes with a nice, straight minimal GUI.
 
