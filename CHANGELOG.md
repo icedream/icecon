@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Binaries are now compiled statically and using Go 1.18.
 - Reuse server address as typed in by the user in connect dialog instead of using resolved IP address. (Windows UI)
 - Update copyright text.
+- Update several dependencies, including yaml.v2 to fix potential looping resource hog (https://github.com/icedream/icecon/security/dependabot/1).
 
 ## [1.0.0] - 2016-05-07
 ### Added
