@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Current server address in title bar. (Windows UI)
 
 ### Changed
-- Binaries are now compiled statically and using Go 1.8.
+- Binaries are now compiled statically and using Go 1.18.
 - Reuse server address as typed in by the user in connect dialog instead of using resolved IP address. (Windows UI)
 - Update copyright text.
 
