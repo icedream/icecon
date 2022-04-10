@@ -5,7 +5,9 @@
 
 *IceCon* is a Q3-compatible RCON client. It can connect to any server that implements RCON over a Q3-compatible network protocol (UDP) and even comes with a nice, straight minimal GUI.
 
-Specifically, this tool has been written for quick administration of modified Modern Warfare 2 ("IW4M") servers. A Windows user could easily set up shortcuts on the desktop that run `icecon.exe -gui <server:port> <password>` which gives you an instant GUI to run commands on your server. Another use case would be scripting on a Linux server by running `icecon -command "<your command here>" <server:port> <password>` to automate specific tasks.
+Specifically, this tool has been written for quick administration of modified Modern Warfare 2 ("IW4M") servers but it [is also officially supported for use with FiveM servers](https://forum.cfx.re/t/release-icecon-the-officially-supported-rcon-tool/7558).
+
+A Windows user could easily set up shortcuts on the desktop that run `icecon.exe -gui <server:port> <password>` which gives you an instant GUI to run commands on your server. Another use case would be scripting on a Linux server by running `icecon -command "<your command here>" <server:port> <password>` to automate specific tasks.
 
 ![Screenshot 1](img/screenshot1.png)
 ![Screenshot 2](img/screenshot2.png)
