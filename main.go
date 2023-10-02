@@ -10,7 +10,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/icedream/go-q3net"
+	quake "github.com/icedream/go-q3net"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 
@@ -117,7 +117,7 @@ func usage() {
 
 func main() {
 	fmt.Println("IceCon - Icedream's RCON Client")
-	fmt.Println("\t\u00A9 2016-2018 Carl Kittelberger/Icedream")
+	fmt.Println("\t\u00A9 2016-2023 Carl Kittelberger/Icedream")
 	fmt.Println()
 
 	argAddressTCP := argAddress.TCP()
@@ -182,7 +182,6 @@ func main() {
 	if socket != nil {
 		socket.Close()
 	}
-
 }
 
 func runConsoleShell() {
