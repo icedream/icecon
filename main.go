@@ -10,8 +10,8 @@ import (
 	"os"
 	"strings"
 
+	"github.com/alecthomas/kingpin/v2"
 	quake "github.com/icedream/go-q3net"
-	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (

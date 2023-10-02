@@ -1,4 +1,5 @@
-//+build windows
+//go:build windows
+// +build windows
 
 package main
 
@@ -10,8 +11,8 @@ import (
 	"strings"
 	"syscall"
 
+	"github.com/alecthomas/kingpin/v2"
 	"github.com/lxn/walk"
-	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (
