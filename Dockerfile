@@ -1,4 +1,4 @@
-FROM golang:1.18-alpine AS build
+FROM golang:1.21-alpine AS build
 
 WORKDIR /usr/src/icecon
 COPY go.mod go.sum ./
@@ -9,7 +9,7 @@ RUN go build -v -ldflags "-s -w" .
 
 ###
 
-FROM alpine:3.15
+FROM alpine:3.18
 
 COPY --from=build /usr/src/icecon/icecon /usr/local/bin
 
