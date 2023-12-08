@@ -9,7 +9,7 @@ RUN go build -v -ldflags "-s -w" .
 
 ###
 
-FROM alpine:3.18
+FROM alpine:3.19
 
 COPY --from=build /usr/src/icecon/icecon /usr/local/bin
 
