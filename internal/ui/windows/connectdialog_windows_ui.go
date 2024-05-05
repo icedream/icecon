@@ -3,7 +3,7 @@
 
 //+build windows
 
-package main
+package windows
 
 import (
 	"github.com/lxn/walk"
